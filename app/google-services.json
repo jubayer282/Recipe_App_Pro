@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "917571120883",
+    "firebase_url": "https://recipes-app-cc8df-default-rtdb.firebaseio.com",
+    "project_id": "recipes-app-cc8df",
+    "storage_bucket": "recipes-app-cc8df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917571120883:android:fde33624412c503c9cd186",
+        "android_client_info": {
+          "package_name": "com.jubayer.recipeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917571120883-o0v2c9iehbe1lg2t9eununtakcupgnk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDndB8sUTWA9kdUvxi2Me6k2uRIC7gL91k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917571120883-o0v2c9iehbe1lg2t9eununtakcupgnk7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
