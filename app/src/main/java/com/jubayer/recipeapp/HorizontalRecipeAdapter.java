@@ -20,9 +20,9 @@ public class HorizontalRecipeAdapter extends RecyclerView.Adapter<HorizontalReci
     List<Recipe> recipeList = new ArrayList<>();
 
     public void setRecipeList(List<Recipe> recipeList) {
-/*
-        recipeList.clear();
-*/
+
+        this.recipeList.clear();
+
         this.recipeList = recipeList;
         notifyDataSetChanged();
     }

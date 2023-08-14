@@ -47,4 +47,5 @@
     <string name="recipe_title">Recipe Title</string>
     <string name="Category">Category</string>
     <string name="_120_calories">120 Calories</string>
+    <string name="copyright_by_trodev_company">© copyright by trodev company</string>
 </resources>

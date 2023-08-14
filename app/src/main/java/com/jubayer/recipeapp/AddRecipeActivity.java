@@ -180,22 +180,31 @@ public class AddRecipeActivity extends AppCompatActivity {
     private void saveDataInDatabase(Recipe recipe, String url) {
         recipe.setImage(url);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Recipes");
-        String id = reference.push().getKey();
-        recipe.setId(id);
-        if (id != null) {
-            reference.child(id).setValue(recipe).addOnCompleteListener(task -> {
-                dialog.dismiss();
-                if (task.isSuccessful()) {
-                    if (isEdit)
-                        Toast.makeText(this, "Recipe Updated Successfully", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(this, "Recipe Added Successfully", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
+        if (isEdit) {
+                reference.child(recipe.getId()).setValue(recipe).addOnCompleteListener(task -> {
                     dialog.dismiss();
-                    Toast.makeText(this, "Error in adding recipe", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    if (task.isSuccessful()) {
+                        Toast.makeText(this, "Recipe Updated Successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Error in updating recipe", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        } else {
+            String id = reference.push().getKey();
+            recipe.setId(id);
+            if (id != null) {
+                reference.child(id).setValue(recipe).addOnCompleteListener(task -> {
+                    dialog.dismiss();
+                    if (task.isSuccessful()) {
+                            Toast.makeText(this, "Recipe Added Successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        dialog.dismiss();
+                        Toast.makeText(this, "Error in adding recipe", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         }
     }
 }

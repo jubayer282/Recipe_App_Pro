@@ -3,9 +3,12 @@ package com.jubayer.recipeapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +23,7 @@ import com.jubayer.recipeapp.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -38,6 +42,34 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadRecipes();
+
+        binding.etSearch.setOnEditorActionListener((textView, i, keyEvent) -> {
+            if (i == EditorInfo.IME_ACTION_SEARCH) {
+                performSearch();
+                return true;
+            }
+            return false;
+        });
+
+        binding.tvSeeAllFavourite.setOnClickListener(view1 -> {
+            Intent intent = new Intent(requireContext(), AllRecipesActivity.class);
+            intent.putExtra("type", "favourite");
+            startActivity(intent);
+        });
+
+        binding.tvSeeAllPopulars.setOnClickListener(view1 -> {
+            Intent intent = new Intent(requireContext(), AllRecipesActivity.class);
+            intent.putExtra("type", "popular");
+            startActivity(intent);
+        });
+    }
+
+    private void performSearch() {
+        String query = Objects.requireNonNull(binding.etSearch.getText()).toString().trim();
+        Intent intent = new Intent(requireContext(), AllRecipesActivity.class);
+        intent.putExtra("type", "search");
+        intent.putExtra("query", query);
+        startActivity(intent);
     }
 
     private void loadRecipes() {
