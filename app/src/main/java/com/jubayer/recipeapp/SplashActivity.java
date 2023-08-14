@@ -47,7 +47,8 @@ public class SplashActivity extends AppCompatActivity {
                 if (user != null) { // if user is logged in
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 }
-                else { // if user is not logged in
+                else {
+                    // if user is not logged in
                     startActivity(new Intent(SplashActivity.this, SignIn.class));
                     Toast.makeText(SplashActivity.this, "Welcome to login page", Toast.LENGTH_SHORT).show();
                     finish();

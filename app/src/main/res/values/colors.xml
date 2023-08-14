@@ -16,5 +16,9 @@
     <color name="secondary">#06CBED</color>
     <color name="color3">#11C59C</color>
 
+    <color name="transparent">#D8000000</color>
+
+
     <color name="blue">#0C1F88</color>
+
 </resources>

@@ -48,4 +48,11 @@
     <string name="Category">Category</string>
     <string name="_120_calories">120 Calories</string>
     <string name="copyright_by_trodev_company">© copyright by trodev company</string>
+    <string name="setting">Setting</string>
+    <string name="satisfy_your_cravings_nwith_just_a_tap_recipe_app">Satisfy your cravings \nwith just a tap - Recipe App</string>
+    <string name="share_app">Share App</string>
+    <string name="rate_app">Rate App</string>
+    <string name="view_more_app">View More App</string>
+    <string name="feedback">Feedback</string>
+    <string name="policy">Policy</string>
 </resources>
