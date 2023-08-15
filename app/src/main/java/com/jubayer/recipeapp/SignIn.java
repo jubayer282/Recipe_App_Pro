@@ -105,21 +105,15 @@ public class SignIn extends AppCompatActivity {
     }
 
     private void logInUsers(String emailStr, String passwordStr) {
-        auth.signInWithEmailAndPassword(emailStr, passwordStr).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    dialog.dismiss();
-                    startActivity(new Intent(SignIn.this, MainActivity.class));
-                    // finish();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(SignIn.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        auth.signInWithEmailAndPassword(emailStr, passwordStr).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
                 dialog.dismiss();
+                startActivity(new Intent(SignIn.this, MainActivity.class));
+                // finish();
             }
+        }).addOnFailureListener(e -> {
+            Toast.makeText(SignIn.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
         });
     }
 }

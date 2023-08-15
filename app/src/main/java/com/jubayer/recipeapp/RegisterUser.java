@@ -1,5 +1,6 @@
 package com.jubayer.recipeapp;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ public class RegisterUser extends AppCompatActivity {
     private String deviceID;
     FirebaseAuth auth;
 
+    @SuppressLint("HardwareIds")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,14 +63,11 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
 
-        binding.loginNowBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.loginNowBtn.setOnClickListener(v -> {
 
-                startActivity(new Intent(RegisterUser.this, SignIn.class));
-                finishAffinity();
-                Toast.makeText(RegisterUser.this, "Welcome Login now", Toast.LENGTH_SHORT).show();
-            }
+            startActivity(new Intent(RegisterUser.this, SignIn.class));
+            finishAffinity();
+            Toast.makeText(RegisterUser.this, "Welcome Login now", Toast.LENGTH_SHORT).show();
         });
 
     }
@@ -146,7 +145,7 @@ public class RegisterUser extends AppCompatActivity {
 
     private void registerUer() {
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("UserData");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
 
         final FirebaseUser user = auth.getCurrentUser();
 
@@ -189,39 +188,30 @@ public class RegisterUser extends AppCompatActivity {
 
     private void signUpUser(FirebaseUser user, String nameStr, String emailStr, String passStr) {
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("UserData");
-       auth.createUserWithEmailAndPassword(emailStr, passStr).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-           @Override
-           public void onComplete(@NonNull Task<AuthResult> task) {
-               if (task.isSuccessful())
-               {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+       auth.createUserWithEmailAndPassword(emailStr, passStr).addOnCompleteListener(task -> {
+           if (task.isSuccessful())
+           {
+               dialog.dismiss();
+               String userId = auth.getCurrentUser().getUid();
+
+               HashMap<String , Object> map = new HashMap<>();
+
+               map.put("Email", emailStr);
+               map.put("name", nameStr);
+               map.put("password", passStr);
+               map.put("Mobile", phoneStr);
+               map.put("userId", userId);
+
+               reference.child(userId).setValue(map).addOnCompleteListener(task1 -> {
+
+                   Toast.makeText(RegisterUser.this, "Register Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterUser.this, SignIn.class));
+               }).addOnFailureListener(e -> {
+                   Toast.makeText(RegisterUser.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                    dialog.dismiss();
-                   String userId = auth.getCurrentUser().getUid();
+               });
 
-                   HashMap<String , Object> map = new HashMap<>();
-
-                   map.put("Email", emailStr);
-                   map.put("name", nameStr);
-                   map.put("password", passStr);
-                   map.put("Mobile", phoneStr);
-                   map.put("userId", userId);
-
-                   reference.child(userId).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                       @Override
-                       public void onComplete(@NonNull Task<Void> task) {
-
-                           Toast.makeText(RegisterUser.this, "Register Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterUser.this, SignIn.class));
-                       }
-                   }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(RegisterUser.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                           dialog.dismiss();
-                       }
-                   });
-
-               }
            }
        });
 

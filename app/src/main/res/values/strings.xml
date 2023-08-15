@@ -55,4 +55,7 @@
     <string name="view_more_app">View More App</string>
     <string name="feedback">Feedback</string>
     <string name="policy">Policy</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="developer_name">Jubayer Hossain</string>
+    <string name="developer_id">the_Jubayer Hossain</string>
 </resources>

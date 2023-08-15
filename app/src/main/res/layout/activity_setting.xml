@@ -243,7 +243,9 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:text="Button"
+        android:textStyle="bold"
+        android:id="@+id/btn_logout"
+        android:text="@string/sign_out"
         android:textColor="@color/black"
         android:background="@drawable/round_back_primary_100"
         app:layout_constraintStart_toStartOf="parent" />

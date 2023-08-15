@@ -62,6 +62,8 @@ public class HomeFragment extends Fragment {
             intent.putExtra("type", "popular");
             startActivity(intent);
         });
+
+        binding.btnSetting.setOnClickListener(view12 -> startActivity(new Intent(requireContext(), SettingActivity.class)));
     }
 
     private void performSearch() {
