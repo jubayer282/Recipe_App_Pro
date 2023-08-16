@@ -26,6 +26,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.jubayer.recipeapp.databinding.ActivityAddRecipeBinding;
+import com.jubayer.recipeapp.models.Category;
+import com.jubayer.recipeapp.models.Recipe;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 
@@ -34,8 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import Models.Category;
-import Models.Recipe;
+
 
 public class AddRecipeActivity extends AppCompatActivity {
     ActivityAddRecipeBinding binding;

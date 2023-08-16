@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".HomeFragment">
+    tools:context="fragment.HomeFragment">
 
     <TextView
         android:id="@+id/tv_title"

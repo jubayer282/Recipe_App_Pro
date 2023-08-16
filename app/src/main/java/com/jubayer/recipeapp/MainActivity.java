@@ -17,12 +17,13 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.jubayer.recipeapp.fragment.CategoryFragment;
+import com.jubayer.recipeapp.fragment.HomeFragment;
+import com.jubayer.recipeapp.fragment.ProfileFragment;
 
 import java.util.Objects;
 
-import Fragment.CategoryFragment;
-import Fragment.HomeFragment;
-import Fragment.ProfileFragment;
+
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
 

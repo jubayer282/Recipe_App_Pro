@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment" >
+    tools:context="fragment.ProfileFragment" >
 
     <ImageView
         android:id="@+id/img_edit_cover"
@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/img_cover"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:src="@drawable/bg_default_recipe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,18 +32,19 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="70dp"
         android:elevation="3dp"
+        android:src="@drawable/pics"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32999998"
-        android:src="@drawable/pics"/>
+        app:layout_constraintVertical_bias="0.32999998" />
 
     <TextView
         android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/user_name"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -55,7 +56,7 @@
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/developer_email"
         app:layout_constraintStart_toStartOf="@+id/tv_user_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
@@ -84,7 +85,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/img_profile"
         app:layout_constraintTop_toTopOf="@+id/img_profile"
-        app:layout_constraintVertical_bias="1.0"/>
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

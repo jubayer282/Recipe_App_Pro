@@ -12,14 +12,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jubayer.recipeapp.adapter.RecipeAdapter;
 import com.jubayer.recipeapp.databinding.ActivityAllRecipesBinding;
+import com.jubayer.recipeapp.models.Recipe;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Adapter.RecipeAdapter;
-import Models.Recipe;
+
 
 public class AllRecipesActivity extends AppCompatActivity {
     ActivityAllRecipesBinding binding;

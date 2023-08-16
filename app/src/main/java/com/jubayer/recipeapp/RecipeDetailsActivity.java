@@ -16,10 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jubayer.recipeapp.databinding.ActivityRecipeDetailsBinding;
+import com.jubayer.recipeapp.models.Recipe;
+import com.jubayer.recipeapp.room.FavouriteRecipe;
+import com.jubayer.recipeapp.room.RecipeRepository;
 
-import Models.Recipe;
-import Room.FavouriteRecipe;
-import Room.RecipeRepository;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
     ActivityRecipeDetailsBinding binding;
