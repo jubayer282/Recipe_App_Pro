@@ -18,14 +18,16 @@
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="Recipe Title"
         android:textColor="@color/black"
         android:textSize="23sp"
-        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintEnd_toStartOf="@+id/img_fvrt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_recipe" />
 
@@ -58,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:padding="7dp"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_recipe"
         app:srcCompat="@drawable/ic_edit" />
@@ -90,5 +92,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_calories"
         app:layout_constraintTop_toBottomOf="@+id/img_recipe" />
+
+    <ImageView
+        android:id="@+id/img_fvrt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_edit"
+        app:layout_constraintEnd_toStartOf="@+id/img_edit"
+        app:layout_constraintTop_toBottomOf="@+id/img_recipe"
+        app:srcCompat="@drawable/ic_favourite"
+        app:tint="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

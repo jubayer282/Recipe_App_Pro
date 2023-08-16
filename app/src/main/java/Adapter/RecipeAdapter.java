@@ -1,5 +1,7 @@
-package com.jubayer.recipeapp;
+package Adapter;
 
+
+import static com.jubayer.recipeapp.databinding.ItemRecipeBinding.*;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,32 +11,31 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.jubayer.recipeapp.databinding.ItemRecipeHorizontalBinding;
+import com.jubayer.recipeapp.R;
+import com.jubayer.recipeapp.RecipeDetailsActivity;
+import com.jubayer.recipeapp.databinding.ItemRecipeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Models.Recipe;
 
-public class HorizontalRecipeAdapter extends RecyclerView.Adapter<HorizontalRecipeAdapter.RecipeHolder> {
+public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeHolder> {
     List<Recipe> recipeList = new ArrayList<>();
 
     public void setRecipeList(List<Recipe> recipeList) {
-
-        this.recipeList.clear();
-
         this.recipeList = recipeList;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public HorizontalRecipeAdapter.RecipeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new RecipeHolder(ItemRecipeHorizontalBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+    public RecipeAdapter.RecipeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new RecipeHolder(inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HorizontalRecipeAdapter.RecipeHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecipeAdapter.RecipeHolder holder, int position) {
         Recipe recipe = recipeList.get(position);
         holder.onBind(recipe);
     }
@@ -45,8 +46,8 @@ public class HorizontalRecipeAdapter extends RecyclerView.Adapter<HorizontalReci
     }
 
     public static class RecipeHolder extends RecyclerView.ViewHolder {
-        ItemRecipeHorizontalBinding binding;
-        public RecipeHolder(@NonNull ItemRecipeHorizontalBinding itemView) {
+        ItemRecipeBinding binding;
+        public RecipeHolder(@NonNull ItemRecipeBinding itemView) {
             super(itemView.getRoot());
             binding = itemView;
         }

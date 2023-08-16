@@ -34,6 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import Models.Category;
+import Models.Recipe;
+
 public class AddRecipeActivity extends AppCompatActivity {
     ActivityAddRecipeBinding binding;
     private boolean isImageSelected = false;

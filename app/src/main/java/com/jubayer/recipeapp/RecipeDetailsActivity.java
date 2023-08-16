@@ -17,7 +17,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jubayer.recipeapp.databinding.ActivityRecipeDetailsBinding;
 
-import java.util.Objects;
+import Models.Recipe;
+import Room.FavouriteRecipe;
+import Room.RecipeRepository;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
     ActivityRecipeDetailsBinding binding;
@@ -35,7 +37,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         binding.tcCategory.setText(recipe.getCategory());
         binding.tvDescription.setText(recipe.getDescription());
         binding.tvCalories.setText(String.format("%s Calories", recipe.getCalories()));
+/*
         binding.tvTime.setText(recipe.getTime());
+*/
 
         Glide
                 .with(RecipeDetailsActivity.this)
@@ -49,15 +53,37 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         } else {
             binding.imgEdit.setVisibility(View.GONE);
         }
-
         binding.imgEdit.setOnClickListener(view -> {
              Intent intent = new Intent(binding.getRoot().getContext(), AddRecipeActivity.class);
              intent.putExtra("recipe", recipe);
              intent.putExtra("isEdit", true);
              binding.getRoot().getContext().startActivity(intent);
          });
-
+        checkFavourite(recipe);
+        binding.imgFvrt.setOnClickListener(view -> {
+            favouriteRecipe(recipe);
+        });
         updateDateWithFireBase(recipe.getId());
+    }
+    private void checkFavourite(Recipe recipe) {
+        RecipeRepository repository = new RecipeRepository(getApplication());
+        boolean isFavourite = repository.isFavourite(recipe.getId());
+        if (isFavourite) {
+            binding.imgFvrt.setColorFilter(getResources().getColor(R.color.accent));
+        } else {
+            binding.imgFvrt.setColorFilter(getResources().getColor(R.color.black));
+        }
+    }
+    private void favouriteRecipe(Recipe recipe) {
+        RecipeRepository repository = new RecipeRepository(getApplication());
+        boolean isFavourite = repository.isFavourite(recipe.getId());
+        if (isFavourite) {
+            repository.delete(new FavouriteRecipe(recipe.getId()));
+            binding.imgFvrt.setColorFilter(getResources().getColor(R.color.black));
+        } else {
+            repository.insert(new FavouriteRecipe(recipe.getId()));
+            binding.imgFvrt.setColorFilter(getResources().getColor(R.color.accent));
+        }
     }
 
     private void updateDateWithFireBase(String id) {
@@ -70,7 +96,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 binding.tcCategory.setText(recipe.getCategory());
                 binding.tvDescription.setText(recipe.getDescription());
                 binding.tvCalories.setText(String.format("%s Calories", recipe.getCalories()));
+/*
                 binding.tvTime.setText(recipe.getTime());
+*/
 
                 Glide
                         .with(RecipeDetailsActivity.this)

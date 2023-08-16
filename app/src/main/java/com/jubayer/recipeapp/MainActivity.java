@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
+import Fragment.CategoryFragment;
+import Fragment.HomeFragment;
+import Fragment.ProfileFragment;
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
 
